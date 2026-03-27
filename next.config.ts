@@ -9,15 +9,14 @@ const remotePatterns: RemotePattern[] = [
     protocol: "https" as const,
     hostname: "images.unsplash.com",
   },
-  ...(supabaseHostname
-    ? [
-        {
-          protocol: "https" as const,
-          hostname: supabaseHostname,
-        },
-      ]
-    : []),
 ];
+
+if (supabaseHostname) {
+  remotePatterns.push({
+    protocol: "https" as const,
+    hostname: supabaseHostname,
+  });
+}
 
 const nextConfig: NextConfig = {
   images: {
