@@ -14,6 +14,7 @@ export const fallbackProducts: ProductView[] = [
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Tops",
+    inStock: true,
     createdAt: new Date(),
   },
   {
@@ -29,6 +30,7 @@ export const fallbackProducts: ProductView[] = [
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Bottoms",
+    inStock: true,
     createdAt: new Date(),
   },
   {
@@ -44,6 +46,7 @@ export const fallbackProducts: ProductView[] = [
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Outerwear",
+    inStock: true,
     createdAt: new Date(),
   },
   {
@@ -52,12 +55,13 @@ export const fallbackProducts: ProductView[] = [
     slug: "signal-snapback",
     price: 199000,
     description:
-      "Structured six-panel snapback with embroidered Lucentrezn mark and neon underbrim accent.",
+      "Structured six-panel snapback with embroidered Lucentrez mark and neon underbrim accent.",
     images: [
       "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=1200&q=80",
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Accessories",
+    inStock: true,
     createdAt: new Date(),
   },
   {
@@ -73,6 +77,7 @@ export const fallbackProducts: ProductView[] = [
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Tops",
+    inStock: true,
     createdAt: new Date(),
   },
   {
@@ -88,6 +93,7 @@ export const fallbackProducts: ProductView[] = [
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Bottoms",
+    inStock: true,
     createdAt: new Date(),
   },
   {
@@ -103,6 +109,7 @@ export const fallbackProducts: ProductView[] = [
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Outerwear",
+    inStock: true,
     createdAt: new Date(),
   },
   {
@@ -118,6 +125,7 @@ export const fallbackProducts: ProductView[] = [
     ],
     shopeeUrl: "https://shopee.co.id/",
     category: "Accessories",
+    inStock: true,
     createdAt: new Date(),
   },
 ];

@@ -12,6 +12,7 @@ create table if not exists public.products (
   images jsonb not null default '[]'::jsonb,
   shopeeUrl text not null,
   category text not null,
+  sold_out boolean not null default false,
   created_at timestamptz not null default now()
 );
 

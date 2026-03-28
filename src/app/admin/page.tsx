@@ -13,10 +13,10 @@ export default async function AdminPage() {
   const [products, gallery] = await Promise.all([getAllProducts(), getGalleryItems()]);
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 py-14 md:px-8">
+    <main className="w-full px-2 py-14">
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-muted">Lucentrezn CMS</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-muted">Lucentrez CMS</p>
           <h1 className="font-display text-5xl uppercase leading-none text-foreground">Admin Dashboard</h1>
         </div>
         <form action="/api/admin/logout" method="post">

@@ -4,40 +4,80 @@ import Link from "next/link";
 import { useState } from "react";
 
 const links = [
-  { href: "/", label: "Featured" },
   { href: "/catalog", label: "Catalog" },
-  { href: "/#gallery", label: "Gallery" },
+  { href: "/community", label: "Community" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState<"ID" | "EN">("ID");
+  const [langOpen, setLangOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-md">
-      <nav className="mx-auto w-full max-w-7xl px-5 py-4 md:px-8">
-        <div className="flex items-center justify-between md:hidden">
+    <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-md">
+      <nav className="w-full py-4">
+        <div className="flex items-center justify-between px-2 md:hidden">
           <Link href="/" className="font-display text-2xl tracking-[0.18em] text-foreground">
-            LUCENTREZN
+            LUCENTREZ
           </Link>
 
-          <button
-            className="rounded-lg border border-border px-3 py-2 text-xs uppercase tracking-widest text-foreground"
-            onClick={() => setOpen((value) => !value)}
-            type="button"
-          >
-            Menu
-          </button>
+          <div className="relative flex items-center gap-2">
+            <button
+              type="button"
+              className="inline-flex items-center rounded-lg border border-border px-2.5 py-2 text-foreground"
+              onClick={() => setLangOpen((prev) => !prev)}
+              aria-label="Open language menu"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" strokeWidth="1.8"/>
+                <path d="M2 12h20M12 2c2.5 2.7 3.8 6.1 3.8 10S14.5 19.3 12 22M12 2C9.5 4.7 8.2 8.1 8.2 12s1.3 7.3 3.8 10" stroke="currentColor" strokeWidth="1.6"/>
+              </svg>
+            </button>
+
+            {langOpen ? (
+              <div className="absolute right-0 top-11 z-50 w-36 rounded-xl border border-border bg-card p-2 shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+                <button
+                  type="button"
+                  className={`block w-full rounded-lg px-3 py-2 text-left text-xs uppercase tracking-[0.14em] ${lang === "ID" ? "bg-foreground text-background" : "text-foreground hover:bg-background"}`}
+                  onClick={() => {
+                    setLang("ID");
+                    setLangOpen(false);
+                  }}
+                >
+                  Indonesia
+                </button>
+                <button
+                  type="button"
+                  className={`mt-1 block w-full rounded-lg px-3 py-2 text-left text-xs uppercase tracking-[0.14em] ${lang === "EN" ? "bg-foreground text-background" : "text-foreground hover:bg-background"}`}
+                  onClick={() => {
+                    setLang("EN");
+                    setLangOpen(false);
+                  }}
+                >
+                  English
+                </button>
+              </div>
+            ) : null}
+
+            <button
+              className="rounded-lg border border-border px-3 py-2 text-xs uppercase tracking-widest text-foreground"
+              onClick={() => setOpen((value) => !value)}
+              type="button"
+            >
+              Menu
+            </button>
+          </div>
         </div>
 
-        <div className="hidden md:block">
-          <div className="relative flex items-center justify-center py-1">
+        <div className="hidden px-2 md:grid md:grid-cols-3 md:items-center md:gap-4">
+          <div className="flex items-center">
             <Link href="/" className="font-display text-5xl tracking-[0.08em] text-foreground">
-              LUCENTREZN
+              LUCENTREZ
             </Link>
           </div>
 
-          <ul className="mt-4 flex items-center justify-center gap-9">
+          <ul className="flex items-center justify-center gap-9">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
@@ -49,11 +89,50 @@ export function Navbar() {
               </li>
             ))}
           </ul>
+
+          <div className="relative flex justify-end">
+            <button
+              type="button"
+              className="inline-flex items-center rounded-full border border-border p-2 text-foreground transition-colors hover:bg-foreground hover:text-background"
+              onClick={() => setLangOpen((prev) => !prev)}
+              aria-label="Open language menu"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" strokeWidth="1.8"/>
+                <path d="M2 12h20M12 2c2.5 2.7 3.8 6.1 3.8 10S14.5 19.3 12 22M12 2C9.5 4.7 8.2 8.1 8.2 12s1.3 7.3 3.8 10" stroke="currentColor" strokeWidth="1.6"/>
+              </svg>
+            </button>
+
+            {langOpen ? (
+              <div className="absolute right-0 top-11 z-50 w-40 rounded-xl border border-border bg-card p-2 shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+                <button
+                  type="button"
+                  className={`block w-full rounded-lg px-3 py-2 text-left text-xs uppercase tracking-[0.14em] ${lang === "ID" ? "bg-foreground text-background" : "text-foreground hover:bg-background"}`}
+                  onClick={() => {
+                    setLang("ID");
+                    setLangOpen(false);
+                  }}
+                >
+                  Indonesia
+                </button>
+                <button
+                  type="button"
+                  className={`mt-1 block w-full rounded-lg px-3 py-2 text-left text-xs uppercase tracking-[0.14em] ${lang === "EN" ? "bg-foreground text-background" : "text-foreground hover:bg-background"}`}
+                  onClick={() => {
+                    setLang("EN");
+                    setLangOpen(false);
+                  }}
+                >
+                  English
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </nav>
 
       {open ? (
-        <div className="border-t border-border bg-card px-5 pb-5 pt-3 md:hidden">
+        <div className="border-t border-border bg-card px-2 pb-5 pt-3 md:hidden">
           <ul className="flex flex-col gap-2">
             {links.map((link) => (
               <li key={link.href}>

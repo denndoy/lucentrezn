@@ -10,6 +10,7 @@ const productSchema = z.object({
   images: z.array(z.string().url()).min(1),
   shopeeUrl: z.string().url(),
   category: z.string().min(2).optional(),
+  soldOut: z.boolean().optional(),
 });
 
 type Params = {
@@ -41,6 +42,7 @@ export async function PATCH(request: NextRequest, { params }: Params) {
       images: parsed.data.images,
       shopeeurl: parsed.data.shopeeUrl,
       category: parsed.data.category ?? "Tops",
+      sold_out: parsed.data.soldOut ?? false,
     })
     .eq("id", id)
     .select()

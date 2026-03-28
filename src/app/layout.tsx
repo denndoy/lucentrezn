@@ -18,15 +18,15 @@ const bebas = Bebas_Neue({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: {
-    default: "Lucentrezn | Premium Streetwear",
-    template: "%s | Lucentrezn",
+    default: "Lucentrez | Premium Streetwear",
+    template: "%s | Lucentrez",
   },
   description:
-    "Lucentrezn is a bold streetwear catalog website. Discover drops, explore lookbooks, and buy directly via marketplace.",
+    "Lucentrez is a bold streetwear catalog website. Discover drops, explore lookbooks, and buy directly via marketplace.",
   openGraph: {
-    title: "Lucentrezn | Premium Streetwear",
+    title: "Lucentrez | Premium Streetwear",
     description:
-      "Browse Lucentrezn products and continue secure checkout on marketplace.",
+      "Browse Lucentrez products and continue secure checkout on marketplace.",
     type: "website",
     images: [
       {

@@ -19,14 +19,14 @@ export async function generateMetadata({ params }: ProductDetailProps): Promise<
   const product = await getProductBySlug(slug);
 
   if (!product) {
-    return { title: "Product Not Found | Lucentrezn" };
+    return { title: "Product Not Found | Lucentrez" };
   }
 
   return {
-    title: `${product.name} | Lucentrezn`,
+    title: `${product.name} | Lucentrez`,
     description: product.description,
     openGraph: {
-      title: `${product.name} | Lucentrezn`,
+      title: `${product.name} | Lucentrez`,
       description: product.description,
       images: [{ url: product.images[0] ?? "/products/placeholder.svg" }],
     },
@@ -42,7 +42,7 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
   }
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 py-14 md:px-8">
+    <main className="w-full px-2 py-14">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
         <section className="grid grid-cols-2 gap-4">
           {product.images.map((image, index) => (

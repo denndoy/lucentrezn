@@ -13,8 +13,12 @@ function toProductView(product: {
   shopeeurl?: string;
   shopeeUrl?: string;
   category: string;
+  sold_out?: boolean;
+  soldOut?: boolean;
   created_at: string;
 }): ProductView {
+  const soldOut = Boolean(product.sold_out ?? product.soldOut ?? false);
+
   return {
     id: product.id,
     name: product.name,
@@ -26,6 +30,7 @@ function toProductView(product: {
       : [],
     shopeeUrl: product.shopeeurl ?? product.shopeeUrl ?? "https://shopee.co.id/",
     category: product.category,
+    inStock: !soldOut,
     createdAt: new Date(product.created_at),
   };
 }

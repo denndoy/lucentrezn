@@ -4,18 +4,20 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { formatRupiah } from "@/lib/format";
-import { ProductView } from "@/lib/types";
+import type { CatalogGridItem } from "@/components/ProductGrid";
 
 type ProductCardProps = {
-  product: ProductView;
+  product: CatalogGridItem;
 };
 
 export function ProductCard({ product }: ProductCardProps) {
+  const soldOut = !product.inStock;
+
   return (
     <motion.article
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 220, damping: 20 }}
-      className="group overflow-hidden rounded-2xl border border-border bg-card shadow-[0_10px_24px_rgba(0,0,0,0.12)] transition-shadow hover:shadow-[0_16px_36px_rgba(0,0,0,0.22)]"
+      className="group overflow-hidden bg-transparent"
     >
       <Link href={`/catalog/${product.slug}`}>
         <div className="relative aspect-[4/5] overflow-hidden">
@@ -23,18 +25,19 @@ export function ProductCard({ product }: ProductCardProps) {
             src={product.images[0] ?? "/products/placeholder.svg"}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            className={`object-cover transition-transform duration-500 group-hover:scale-105 ${soldOut ? "scale-[1.01] blur-[0.8px] saturate-75 brightness-90 opacity-60" : "opacity-100"}`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           />
-          <span className="absolute left-3 top-3 rounded-full border border-border bg-background/90 px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-foreground">
-            {product.category}
-          </span>
+          {soldOut ? (
+            <span className="absolute left-3 top-3 bg-foreground px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-background">
+              Sold Out
+            </span>
+          ) : null}
         </div>
 
-        <div className="space-y-2 p-4">
-          <h3 className="font-display text-2xl uppercase leading-none text-foreground">{product.name}</h3>
-          <p className="text-sm text-foreground/90">{formatRupiah(product.price)}</p>
-          <p className="text-xs uppercase tracking-[0.16em] text-foreground/80">Tap to view and buy on marketplace</p>
+        <div className={`space-y-1 py-4 ${soldOut ? "opacity-60" : "opacity-100"}`}>
+          <h3 className="font-display text-4xl uppercase leading-none text-foreground">{product.name}</h3>
+          <p className="text-2xl font-semibold text-foreground">{formatRupiah(product.price)}</p>
         </div>
       </Link>
     </motion.article>

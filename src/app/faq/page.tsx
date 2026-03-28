@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ | Lucentrezn",
-  description: "Frequently asked questions about shopping Lucentrezn via marketplace.",
+  title: "FAQ | Lucentrez",
+  description: "Frequently asked questions about shopping Lucentrez via marketplace.",
 };
 
 const items = [
@@ -22,7 +22,7 @@ const items = [
 
 export default function FaqPage() {
   return (
-    <main className="mx-auto w-full max-w-5xl px-5 py-14 md:px-8">
+    <main className="w-full px-2 py-14">
       <h1 className="font-display text-5xl uppercase leading-none text-foreground md:text-7xl">FAQ</h1>
       <div className="mt-8 space-y-4">
         {items.map((item) => (

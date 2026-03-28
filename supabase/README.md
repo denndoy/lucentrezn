@@ -2,6 +2,7 @@ Supabase setup
 
 1) Open the Supabase dashboard > SQL Editor.
 2) Run supabase/schema.sql to create tables.
+3) If your DB already exists, run supabase/add-sold-out-column.sql to add product sold out status.
 3) Run supabase/seed.sql to insert starter data.
 4) Run supabase/rls.sql to enable public read policies.
 

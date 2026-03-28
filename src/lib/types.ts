@@ -7,6 +7,7 @@ export type ProductView = {
   images: string[];
   shopeeUrl: string;
   category: string;
+  inStock: boolean;
   createdAt: Date;
 };
 
@@ -24,4 +25,5 @@ export type AdminProductInput = {
   images: string[];
   shopeeUrl: string;
   category?: string;
+  soldOut?: boolean;
 };

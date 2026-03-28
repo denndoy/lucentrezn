@@ -23,6 +23,7 @@ const emptyProduct = {
   description: "",
   images: "",
   shopeeUrl: "https://shopee.co.id/",
+  soldOut: false,
 };
 
 export function AdminPanel({ initialProducts, initialGallery }: AdminPanelProps) {
@@ -104,6 +105,7 @@ export function AdminPanel({ initialProducts, initialGallery }: AdminPanelProps)
       description: form.description,
       images,
       shopeeUrl: form.shopeeUrl,
+      soldOut: form.soldOut,
     };
 
     const endpoint = form.id ? `/api/admin/products/${form.id}` : "/api/admin/products";
@@ -277,6 +279,16 @@ export function AdminPanel({ initialProducts, initialGallery }: AdminPanelProps)
             />
             <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} placeholder="Description" className="min-h-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground md:col-span-2" required />
 
+            <label className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground md:col-span-2">
+              <input
+                type="checkbox"
+                checked={form.soldOut}
+                onChange={(e) => setForm({ ...form, soldOut: e.target.checked })}
+                className="h-4 w-4 accent-black"
+              />
+              Mark as sold out
+            </label>
+
             <div className="md:col-span-2">
               <label className="mb-2 block text-xs uppercase tracking-[0.15em] text-muted">Images</label>
               <div className="flex flex-wrap items-center gap-2">
@@ -366,7 +378,9 @@ export function AdminPanel({ initialProducts, initialGallery }: AdminPanelProps)
                   />
                   <div>
                     <p className="font-semibold text-foreground">{product.name}</p>
-                    <p className="mt-1 text-xs text-muted">{product.category} • Rp{product.price.toLocaleString("id-ID")}</p>
+                    <p className="mt-1 text-xs text-muted">
+                      {product.category} • Rp{product.price.toLocaleString("id-ID")} • {product.inStock ? "In Stock" : "Sold Out"}
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -382,6 +396,7 @@ export function AdminPanel({ initialProducts, initialGallery }: AdminPanelProps)
                         description: product.description,
                         images: product.images.join("\n"),
                         shopeeUrl: product.shopeeUrl,
+                        soldOut: !product.inStock,
                       })
                     }
                   >
